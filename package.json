@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/timurista/weather-app-node/issues"
   },
-  "homepage": "https://github.com/timurista/weather-app-node#readme"
+  "homepage": "https://github.com/timurista/weather-app-node#readme",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
 }
