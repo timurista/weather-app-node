@@ -6,14 +6,14 @@ const { weather_key } = require('./SECRET_KEYS');
 const argv = yargs
   .options({
     a: {
-      demand: false,
       alias: 'address',
       describe: 'Address to fetch weather for',
       string: true
     },
     d: {
       alias: 'default',
-      describe: 'Flag to save the address as default'
+      describe: 'Flag to save the address as default',
+      boolean: true
     }
   })
   .help()
@@ -51,7 +51,6 @@ function main() {
     })
     .then(response => {
       const { temperature, apparentTemperature, summary } = response.data.currently;
-      // console.log(JSON.stringify(response.data.currently, undefined, 2))
       console.log(`Weather is: ${summary}. It is ${temperature} and feels like ${apparentTemperature}`);
     })
     .catch(e => {
