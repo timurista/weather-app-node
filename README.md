@@ -12,7 +12,7 @@ Tucson, AZ 85742, USA
 Weather is: Clear. It is 91.25 and feels like 91.25
 ```
 
-### Save Defaults
+### Save A Default Address
 ```bash
 >node app-promise.js --adress="85742" --default
 Default address saved: 85742
