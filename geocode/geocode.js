@@ -15,8 +15,7 @@ const geocodeAddress = (address, callback) => {
       callback('Unable to find that address.');
     } else if (body.status === 'OK') {
       const address = _.get(body, 'results[0].formatted_address');
-      const { lat, lng } = _.get(body, 'results[0].geometry.location', {});
-      
+      const { lat, lng } = _.get(body, 'results[0].geometry.location', {});      
       callback(undefined, {
         address,
         latitude: lat,
