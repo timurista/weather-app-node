@@ -1,7 +1,7 @@
 const request = require('request');
 const _ = require('lodash');
 
-const geocodeAddress = (address) => {
+const geocodeAddress = (address, callback) => {
   console.log(`fetching ${address}...`);
   
   // make request
@@ -10,19 +10,18 @@ const geocodeAddress = (address) => {
     json: true
   }, (error, response, body) => {
     if (error) {
-      console.log('Unable to connect to google servers.');
+      callback('Unable to connect to google servers.');
     } else if (body.status === 'ZERO_RESULTS') {
-      console.log('Unable to find that address.');
+      callback('Unable to find that address.');
     } else if (body.status === 'OK') {
-      // pretty print
-      // use json stringify, then add undefined to not replace, and value of 2 to format
-      // console.log(JSON.stringify(body, undefined, 2));
-  
       const address = _.get(body, 'results[0].formatted_address');
       const { lat, lng } = _.get(body, 'results[0].geometry.location', {});
       
-      console.log(`Address: ${address}`);
-      console.log(`LAT: ${lat}, LNG: ${lng}`);
+      callback(undefined, {
+        address,
+        latitude: lat,
+        longitude: lng
+      });
     }
   });
 }
