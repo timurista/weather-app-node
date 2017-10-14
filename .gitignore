@@ -1,2 +1,3 @@
 node_modules
 SECRET_KEYS.js
+defaultAddress.json
